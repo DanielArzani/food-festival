@@ -12,7 +12,8 @@
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
-    <script src="./dist/app.bundle.js" defer></script>
+    <!-- <script src="./dist/app.bundle.js" defer></script> -->
+    <script src="./assets/js/script.js" defer></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -228,4 +229,17 @@
       </div>
     </footer>
   </body>
+  <script>
+    (function () {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          // It's important that we include the ./ in front of service-worker.js in the preceding code block. If we used an absolute path here, this configuration would break on the deployed application.
+          .register("./service-worker.js")
+          .then(() => console.log("Service Worker registered successfully."))
+          .catch((error) =>
+            console.log("Service Worker registration failed:", error)
+          );
+      }
+    })();
+  </script>
 </html>
